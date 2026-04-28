@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="glass p-4">
+<h2>Exam</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    {% for q in questions %}
+        <div class="mb-3">
+            <p><b>{{ forloop.counter }}. {{ q.question_text }}</b></p>
+
+            {% if q.question_type == 'MCQ' %}
+                <input type="radio" name="{{ q.id }}" value="{{ q.option1 }}"> {{ q.option1 }}<br>
+                <input type="radio" name="{{ q.id }}" value="{{ q.option2 }}"> {{ q.option2 }}<br>
+                <input type="radio" name="{{ q.id }}" value="{{ q.option3 }}"> {{ q.option3 }}<br>
+                <input type="radio" name="{{ q.id }}" value="{{ q.option4 }}"> {{ q.option4 }}<br>
+            {% else %}
+                <textarea name="text_{{ q.id }}" class="form-control"></textarea>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <button class="btn btn-success">Submit Exam</button>
+
+</form>
+</div>
+
+{% endblock %}
+
+
+
+

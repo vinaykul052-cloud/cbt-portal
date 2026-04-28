@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="glass p-4 text-center">
+    <h2>Complete Payment</h2>
+
+    <p>Exam Fee: 100rs</p>
+    <p><b>UPI ID:</b> yourupi@bank</p>
+
+    <img src="/media/qr.png" width="200">
+
+    <hr>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="payment_proof" required>
+        <br><br>
+        <button class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

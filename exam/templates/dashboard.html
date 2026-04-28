@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="glass p-4 shadow-lg text-center">
+    <h2>Welcome {{ student.name }}</h2>
+
+    <br>
+
+    {% if not student.payment_status %}
+        <p class="text-warning">Payment Pending</p>
+        <a href="/payment/" class="btn btn-custom">Pay Now</a>
+    {% else %}
+        <a href="/exam/" class="btn btn-success">Start Exam</a>
+    {% endif %}
+
+    <br><br>
+
+    <a href="/logout/" class="btn btn-danger">Logout</a>
+</div>
+
+{% endblock %}

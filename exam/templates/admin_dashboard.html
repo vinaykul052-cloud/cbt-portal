@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="glass p-4">
+    <h3> Admin Dashboard</h3>
+
+    <table class="table table-dark table-striped mt-3">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Payment</th>
+            <th>Action</th>
+        </tr>
+
+        {% for s in students %}
+        <tr>
+            <td>{{ s.name }}</td>
+            <td>{{ s.email }}</td>
+            <td>{{ s.payment_status }}</td>
+            <td>
+                <a href="/approve-payment/{{ s.id }}/" class="btn btn-success btn-sm">Approve</a>
+                <!--New button-->
+                <a href="/check-response/{{ s.id }}/" class="btn btn-warning btn-sm">Check Answers</a>
+                <!--Publish Result Button-->
+                <a href="/publish-result/{{ s.id }}/" class="btn btn-primary btn-sm">Publish Result</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/logout/" class="btn btn-danger">Logout</a>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
